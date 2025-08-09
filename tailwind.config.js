@@ -10,6 +10,9 @@ module.exports = {
         "azzurro-contrast": "#2c1a10", // np. do nagłówków
         "azzurro-white": "#fffaf4", // cieplejszy biały, opcjonalnie
       },
+      fontFamily: {
+        playfair: ['"Playfair Display"', "serif"],
+      },
     },
   },
   plugins: [],
