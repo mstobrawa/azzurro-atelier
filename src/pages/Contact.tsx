@@ -1,17 +1,17 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 
+// -------------------------
+// Komponent formularza
+// -------------------------
 interface ContactFormProps {
-  productName?: string; // <-- opcjonalnie przekazujemy nazwę produktu
+  productName?: string;
 }
 
-export default function ContactForm({
-  productName,
-}: ContactFormProps): React.ReactElement {
+function ContactForm({ productName }: ContactFormProps): React.ReactElement {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = () => {
-    setSubmitted(true);
-  };
+  const handleSubmit = () => setSubmitted(true);
 
   if (submitted) {
     return (
@@ -41,12 +41,11 @@ export default function ContactForm({
       className="max-w-lg mt-36 mx-auto p-8 bg-moon-cream rounded-lg shadow-lg font-playfair text-azzurro-brown tracking-wide"
     >
       <input type="hidden" name="form-name" value="contact" />
-
-      {/* ukryte pole z nazwą produktu */}
       {productName && (
         <input type="hidden" name="product" value={productName} />
       )}
 
+      {/* honeypot */}
       <p className="hidden">
         <label>
           Jeśli jesteś robotem, zostaw to pole puste:
@@ -54,6 +53,24 @@ export default function ContactForm({
         </label>
       </p>
 
+      {/* widoczne pole produktu */}
+      {productName && (
+        <div className="mb-6">
+          <label htmlFor="product" className="block mb-2 text-lg font-semibold">
+            Produkt
+          </label>
+          <input
+            id="product"
+            name="product-visible"
+            type="text"
+            value={productName}
+            readOnly
+            className="w-full px-4 py-3 border border-azzurro-brown rounded-md focus:outline-none focus:ring-2 focus:ring-moon-rose transition bg-gray-100"
+          />
+        </div>
+      )}
+
+      {/* imię */}
       <div className="mb-6">
         <label htmlFor="name" className="block mb-2 text-lg font-semibold">
           Imię
@@ -68,6 +85,7 @@ export default function ContactForm({
         />
       </div>
 
+      {/* email */}
       <div className="mb-6">
         <label htmlFor="email" className="block mb-2 text-lg font-semibold">
           Email
@@ -82,6 +100,7 @@ export default function ContactForm({
         />
       </div>
 
+      {/* wiadomość */}
       <div className="mb-6">
         <label htmlFor="message" className="block mb-2 text-lg font-semibold">
           Treść wiadomości
@@ -104,4 +123,15 @@ export default function ContactForm({
       </button>
     </form>
   );
+}
+
+// -------------------------
+// Strona kontaktowa
+// -------------------------
+export default function Contact(): React.ReactElement {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const productNameFromUrl = params.get("product") || undefined;
+
+  return <ContactForm productName={productNameFromUrl} />;
 }
