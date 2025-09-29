@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Products() {
   return (
     <div className="container mx-auto px-4 pt-40">
-      <h1 className="text-3xl font-playfair font-bold mb-6 text-center">
+      <h1 className="text-4xl font-playfair font-bold mb-6 text-center text-azzurro-brown">
         Nasze produkty
       </h1>
 

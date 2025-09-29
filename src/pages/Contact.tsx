@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 
-export default function ContactForm(): React.ReactElement {
+interface ContactFormProps {
+  productName?: string; // <-- opcjonalnie przekazujemy nazwę produktu
+}
+
+export default function ContactForm({
+  productName,
+}: ContactFormProps): React.ReactElement {
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = () => {
-    // Netlify sam obsługuje submit, więc nie blokujemy defaultowego zachowania
-    // ale możemy ustawić stan submitted
     setSubmitted(true);
   };
 
@@ -15,7 +19,14 @@ export default function ContactForm(): React.ReactElement {
         <h2 className="text-2xl font-semibold mb-4">
           Dziękujemy za wiadomość!
         </h2>
-        <p>Skontaktujemy się z Tobą najszybciej jak to możliwe.</p>
+        {productName ? (
+          <p>
+            Otrzymaliśmy Twoje zapytanie dotyczące:{" "}
+            <span className="font-bold">{productName}</span>.
+          </p>
+        ) : (
+          <p>Skontaktujemy się z Tobą najszybciej jak to możliwe.</p>
+        )}
       </div>
     );
   }
@@ -30,6 +41,12 @@ export default function ContactForm(): React.ReactElement {
       className="max-w-lg mt-36 mx-auto p-8 bg-moon-cream rounded-lg shadow-lg font-playfair text-azzurro-brown tracking-wide"
     >
       <input type="hidden" name="form-name" value="contact" />
+
+      {/* ukryte pole z nazwą produktu */}
+      {productName && (
+        <input type="hidden" name="product" value={productName} />
+      )}
+
       <p className="hidden">
         <label>
           Jeśli jesteś robotem, zostaw to pole puste:

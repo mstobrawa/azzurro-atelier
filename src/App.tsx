@@ -32,7 +32,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/social" element={<Social href={undefined} />} />
+            <Route path="/social" element={<Social />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:slug" element={<ProductDetails />} />
           </Routes>

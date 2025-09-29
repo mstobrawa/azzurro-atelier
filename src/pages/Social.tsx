@@ -1,13 +1,13 @@
 import React from "react";
 import { Instagram, Mail } from "lucide-react";
 
-export default function Social({ href }) {
+export default function Social() {
   return (
     <main className="min-h-screen bg-moon-cream flex flex-col items-center justify-center p-8 font-playfair text-azzurro-brown tracking-wide">
       <h1 className="text-4xl font-bold mb-6">Znajdź nas w sieci</h1>
       <p className="max-w-md text-center mb-10 text-lg">
-        Obserwuj nas na Instagramie i napisz do nas maila. Bądź na bieżąco z
-        najnowszymi kolekcjami i wyjątkowymi promocjami!
+        Obserwuj nas na Instagramie. Masz pytania? Napisz do nas maila. Bądź na
+        bieżąco z najnowszymi kolekcjami i wyjątkowymi promocjami!
       </p>
 
       <div className="flex space-x-12">
