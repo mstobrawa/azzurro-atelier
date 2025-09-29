@@ -1,4 +1,3 @@
-import React from "react";
 import { Instagram, Mail } from "lucide-react";
 
 export default function Social() {
