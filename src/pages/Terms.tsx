@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Terms(): React.ReactElement {
   return (
-    <div className="container mx-auto px-4 pt-40 max-w-3xl">
+    <div className="container mx-auto px-4 pt-32 max-w-3xl font-playfair text-azzurro-brown">
       <h1 className="text-3xl font-playfair font-bold mb-6 text-center">
         Regulamin sklepu Azzurro Atelier
       </h1>
@@ -35,24 +35,25 @@ export default function Terms(): React.ReactElement {
         <p>
           Zamówienia realizowane są po przesłaniu formularza kontaktowego z
           wybranym produktem. Sklep nie posiada zintegrowanych płatności online,
-          dlatego płatność odbywa się po wysłaniu faktury:
+          dlatego płatność odbywa się po wysłaniu przez potwierdzenia
+          zamówienia. Możliwe formy płatności:
         </p>
         <ul className="list-disc list-inside ml-4">
           <li>Blik</li>
           <li>Przelew tradycyjny na konto bankowe</li>
         </ul>
-        <p>
-          Wysyłka zamówienia następuje po otrzymaniu potwierdzenia płatności.
-        </p>
       </section>
 
       {/* 4. Wysyłka */}
       <section className="mb-6">
         <h2 className="text-xl font-semibold mb-2">4. Wysyłka</h2>
+        <p>Wysyłka zamówienia następuje po otrzymaniu płatności.</p>
         <p>
-          Produkty wysyłane są wyłącznie za pośrednictwem InPost. Koszt wysyłki
-          oraz czas doręczenia podawany jest w indywidualnej wiadomości e-mail
-          po otrzymaniu zamówienia.
+          Produkty wysyłane są wyłącznie za pośrednictwem InPost, w szczególnych
+          przypadkach na życzenie klienta możliwa inna forma wysyłki. Koszt
+          wysyłki (w większości przypadków - Mini Paczka: 11,99 zł ) oraz czas
+          doręczenia podawany jest w indywidualnej wiadomości e-mail po
+          otrzymaniu zamówienia.
         </p>
       </section>
 

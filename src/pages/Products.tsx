@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function Products() {
   return (
-    <div className="container mx-auto px-4 pt-40">
-      <h1 className="text-4xl font-playfair font-bold mb-6 text-center text-azzurro-brown">
+    <div className="container mx-auto px-4 pt-32">
+      <h1 className="text-4xl font-playfair font-bold mb-6 text-center text-azzurro-brown tracking-wider">
         Nasze produkty
       </h1>
 

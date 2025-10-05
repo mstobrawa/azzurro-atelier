@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -15,6 +15,18 @@ type HeaderProps = {
 
 export default function Header({ logo, title, links }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
+
+  // ✅ Zamyka menu, gdy wracamy do szerokiego widoku (np. desktop)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
@@ -35,7 +47,7 @@ export default function Header({ logo, title, links }: HeaderProps) {
           </button>
 
           {/* Menu desktop */}
-          <nav className="hidden md:flex space-x-6 font-medium">
+          <nav className="hidden md:flex space-x-6 font-playfair">
             {links.map((link) => (
               <Link
                 key={link.to}
@@ -68,7 +80,8 @@ export default function Header({ logo, title, links }: HeaderProps) {
             <Link
               key={link.to}
               to={link.to}
-              className="block py-2 border-b border-[#52220e]/20 hover:bg-[#f0e8db]/60 rounded-lg transition"
+              className="block py-2 border-b border-[#52220e]/20 hover:bg-
+                          "
               onClick={() => setIsOpen(false)}
             >
               {link.label}
