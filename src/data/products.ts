@@ -10,8 +10,8 @@ export const products: Product[] = [
   {
     id: 1,
     name: "Kolczyki Azzurro",
-    price: "120 zł",
-    image: "https://via.placeholder.com/300x200?text=Kolczyki",
+    price: "39.99 zł",
+    image: "/images/products/01.webp",
     slug: "kolczyki-azzurro-01",
   },
   {

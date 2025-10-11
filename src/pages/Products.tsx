@@ -8,7 +8,7 @@ export default function Products() {
         Nasze produkty
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {products.map((product) => (
           <Link
             key={product.id}
@@ -18,10 +18,11 @@ export default function Products() {
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-48 object-cover"
+              className="w-full h-auto object-cover"
+              loading="lazy"
             />
-            <div className="p-4">
-              <h2 className="text-xl font-semibold">{product.name}</h2>
+            <div className="p-5 text-center">
+              <h2 className="text-xl font-semibold mb-1">{product.name}</h2>
               <p className="text-gray-600">{product.price}</p>
             </div>
           </Link>
