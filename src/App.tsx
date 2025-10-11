@@ -11,7 +11,7 @@ import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 import Terms from "./pages/Terms";
 
-import logo from "./assets/logo.webp";
+import logo from "../public/images/logo/logo.webp";
 
 export default function App() {
   return (
@@ -50,8 +50,7 @@ export default function App() {
             { label: "Social media", href: "/social" },
             { label: "Regulamin", href: "/terms" },
           ]}
-          contactEmail="kontakt@azzurro-atelier.pl"
-          contactPhone="+48 123 456 789"
+          contactEmail="kontakt.azzurro.atelier@gmail.com"
         />
       </div>
     </Router>

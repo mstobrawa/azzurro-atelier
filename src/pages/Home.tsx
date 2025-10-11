@@ -1,3 +1,24 @@
+import Stack from "../components/Stack";
+
+const images = [
+  {
+    id: 1,
+    img: "/public/images/stack/1.webp",
+  },
+  {
+    id: 2,
+    img: "/public/images/stack/2.webp",
+  },
+  {
+    id: 3,
+    img: "/public/images/stack/3.webp",
+  },
+  {
+    id: 4,
+    img: "/public/images/stack/4.webp",
+  },
+];
+
 export default function Home() {
   return (
     <div className="pt-32 px-6 font-playfair text-azzurro-brown tracking-wider max-w-4xl mx-auto bg-azzurro-cream">
@@ -10,6 +31,15 @@ export default function Home() {
         dla włoskiej tradycji rzemiosła, gdzie każda kolekcja powstaje z
         miłością do detali i szacunkiem dla piękna.
       </p>
+      <div className="flex justify-center mt-6">
+        <Stack
+          randomRotation={true}
+          sensitivity={180}
+          sendToBackOnClick={false}
+          cardDimensions={{ width: 300, height: 300 }}
+          cardsData={images}
+        />
+      </div>
     </div>
   );
 }
