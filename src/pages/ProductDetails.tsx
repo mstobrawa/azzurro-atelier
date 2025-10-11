@@ -13,14 +13,15 @@ export default function ProductDetails() {
 
   return (
     <div className="container mx-auto px-4 pt-40">
-      <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-md p-6">
+      <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow-md p-6 font-playfair">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-64 object-cover rounded-lg"
+          className="w-full h-auto object-cover rounded-lg"
         />
         <h1 className="text-3xl font-bold mt-4">{product.name}</h1>
-        <p className="text-xl text-gray-600 mt-2">{product.price}</p>
+        <h2 className="text-2xl font-playfair mt-2">{product.discription}</h2>
+        <p className="text-4xl text-gray-600 mt-2">{product.price}</p>
 
         {/* PRZEKAZANIE NAZWY PRODUKTU DO FORMULARZA */}
         <Link

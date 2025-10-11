@@ -23,7 +23,10 @@ export default function Products() {
             />
             <div className="p-5 text-center">
               <h2 className="text-xl font-semibold mb-1">{product.name}</h2>
-              <p className="text-gray-600">{product.price}</p>
+              <h2 className="text-md font-playfair mb-1">
+                {product.discription}
+              </h2>
+              <p className="text-gray-600 text-2xl">{product.price}</p>
             </div>
           </Link>
         ))}

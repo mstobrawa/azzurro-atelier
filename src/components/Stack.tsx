@@ -63,19 +63,19 @@ export default function Stack({
       : [
           {
             id: 1,
-            img: "/public/images/stack/1.webp",
+            img: "/images/stack/1.webp",
           },
           {
             id: 2,
-            img: "/public/images/stack/2.webp",
+            img: "/images/stack/2.webp",
           },
           {
             id: 3,
-            img: "/public/images/stack/3.webp",
+            img: "/images/stack/3.webp",
           },
           {
             id: 4,
-            img: "/public/images/stack/4.webp",
+            img: "/images/stack/4.webp",
           },
         ]
   );
@@ -109,7 +109,7 @@ export default function Stack({
             sensitivity={sensitivity}
           >
             <motion.div
-              className="rounded-2xl overflow-hidden border-4 border-white"
+              className="rounded-2xl overflow-hidden border-4 border-azzurro-brown"
               onClick={() => sendToBackOnClick && sendToBack(card.id)}
               animate={{
                 rotateZ: (cards.length - index - 1) * 4 + randomRotate,
