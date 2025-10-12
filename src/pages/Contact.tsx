@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-// -------------------------
-// Komponent formularza
-// -------------------------
 interface ContactFormProps {
   productName?: string;
 }
@@ -11,6 +8,7 @@ interface ContactFormProps {
 function ContactForm({ productName }: ContactFormProps): React.ReactElement {
   const [submitted, setSubmitted] = useState(false);
 
+  // Ważne: nie blokujemy submitu, Netlify potrzebuje normalnego wysyłania
   const handleSubmit = () => setSubmitted(true);
 
   if (submitted) {
@@ -75,7 +73,6 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
           </div>
         )}
 
-        {/* imię */}
         <div className="mb-6">
           <label htmlFor="name" className="block mb-2 text-lg font-semibold">
             Imię
@@ -90,7 +87,6 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
           />
         </div>
 
-        {/* email */}
         <div className="mb-6">
           <label htmlFor="email" className="block mb-2 text-lg font-semibold">
             Email
@@ -105,7 +101,6 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
           />
         </div>
 
-        {/* wiadomość */}
         <div className="mb-6">
           <label htmlFor="message" className="block mb-2 text-lg font-semibold">
             Treść wiadomości
@@ -131,8 +126,7 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
             />
             <span>
               Wyrażam zgodę na przetwarzanie moich danych osobowych w celu
-              kontaktu w sprawie zapytania. Administratorem danych jest Azzurro
-              Atelier. Więcej informacji znajdziesz w{" "}
+              kontaktu. Więcej informacji w{" "}
               <Link
                 to="/terms"
                 className="underline text-[#52220e] hover:text-[#3d1a0b]"
@@ -155,9 +149,6 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
   );
 }
 
-// -------------------------
-// Strona kontaktowa
-// -------------------------
 export default function Contact(): React.ReactElement {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
