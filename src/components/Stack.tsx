@@ -61,22 +61,10 @@ export default function Stack({
     cardsData.length
       ? cardsData
       : [
-          {
-            id: 1,
-            img: "/images/stack/1.webp",
-          },
-          {
-            id: 2,
-            img: "/images/stack/2.webp",
-          },
-          {
-            id: 3,
-            img: "/images/stack/3.webp",
-          },
-          {
-            id: 4,
-            img: "/images/stack/4.webp",
-          },
+          { id: 1, img: "/images/stack/1.webp" },
+          { id: 2, img: "/images/stack/2.webp" },
+          { id: 3, img: "/images/stack/3.webp" },
+          { id: 4, img: "/images/stack/4.webp" },
         ]
   );
 

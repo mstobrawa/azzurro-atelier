@@ -71,16 +71,16 @@ export default function Header({ logo, title, links }: HeaderProps) {
 
       {/* Menu mobilne */}
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-[#f0e8db]/90 backdrop-blur-lg z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-64 bg-[#f0e8db] backdrop-blur-lg z-50 transform transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="px-6 py-6 space-y-4">
+        <div className="px-6 py-6 space-y-4 font-playfair text-azzurro-brown font-bold ">
           {links.map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              className="block py-2 border-b border-[#52220e]/20 hover:bg-
+              className="block hover:underline py-2 border-b border-[#52220e]/20 hover:bg-
                           "
               onClick={() => setIsOpen(false)}
             >

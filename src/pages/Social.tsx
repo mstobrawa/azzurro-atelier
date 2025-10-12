@@ -12,7 +12,6 @@ export default function Social() {
       <div className="flex space-x-12">
         <a
           href="https://www.instagram.com/azzurro_atelier/" // zmień na swój link
-          target="_blank"
           rel="noopener noreferrer"
           className="flex flex-col items-center text-azzurro-brown hover:text-moon-rose transition"
           aria-label="Instagram"
@@ -22,7 +21,7 @@ export default function Social() {
         </a>
 
         <a
-          href="mailto:kontakt@azzurroatelier.pl" // zmień na swój mail
+          href="mailto:kontakt.azzurro.atelier@gmail.com"
           className="flex flex-col items-center text-azzurro-brown hover:text-moon-rose transition"
           aria-label="Email"
         >
