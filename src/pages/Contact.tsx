@@ -66,7 +66,7 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
             </label>
             <input
               id="product"
-              name="product-visible"
+              name="product"
               type="text"
               value={productName}
               readOnly
