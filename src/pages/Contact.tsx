@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-export default function Contact(): React.ReactElement {
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const productNameFromUrl = params.get("product") || undefined;
+// -------------------------
+// Komponent formularza
+// -------------------------
+interface ContactFormProps {
+  productName?: string;
+}
 
+function ContactForm({ productName }: ContactFormProps): React.ReactElement {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = () => {
-    // Nie blokujemy default submitu!
-    setSubmitted(true);
-  };
+  const handleSubmit = () => setSubmitted(true);
 
   if (submitted) {
     return (
@@ -19,10 +19,10 @@ export default function Contact(): React.ReactElement {
         <h2 className="text-2xl font-semibold mb-4">
           Dziękujemy za wiadomość!
         </h2>
-        {productNameFromUrl ? (
+        {productName ? (
           <p>
             Otrzymaliśmy Twoje zapytanie dotyczące:{" "}
-            <span className="font-bold">{productNameFromUrl}</span>.
+            <span className="font-bold">{productName}</span>.
           </p>
         ) : (
           <p>Skontaktujemy się z Tobą najszybciej jak to możliwe.</p>
@@ -43,17 +43,39 @@ export default function Contact(): React.ReactElement {
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="contact" />
+        {productName && (
+          <input type="hidden" name="product" value={productName} />
+        )}
+
+        {/* honeypot */}
         <p className="hidden">
           <label>
-            Nie wypełniaj tego pola:
+            Jeśli jesteś robotem, zostaw to pole puste:
             <input name="bot-field" />
           </label>
         </p>
 
-        {productNameFromUrl && (
-          <input type="hidden" name="product" value={productNameFromUrl} />
+        {/* widoczne pole produktu */}
+        {productName && (
+          <div className="mb-6">
+            <label
+              htmlFor="product"
+              className="block mb-2 text-lg font-semibold"
+            >
+              Produkt
+            </label>
+            <input
+              id="product"
+              name="product-visible"
+              type="text"
+              value={productName}
+              readOnly
+              className="w-full px-4 py-3 border border-azzurro-brown rounded-md focus:outline-none focus:ring-2 focus:ring-moon-rose transition bg-gray-100"
+            />
+          </div>
         )}
 
+        {/* imię */}
         <div className="mb-6">
           <label htmlFor="name" className="block mb-2 text-lg font-semibold">
             Imię
@@ -68,6 +90,7 @@ export default function Contact(): React.ReactElement {
           />
         </div>
 
+        {/* email */}
         <div className="mb-6">
           <label htmlFor="email" className="block mb-2 text-lg font-semibold">
             Email
@@ -82,6 +105,7 @@ export default function Contact(): React.ReactElement {
           />
         </div>
 
+        {/* wiadomość */}
         <div className="mb-6">
           <label htmlFor="message" className="block mb-2 text-lg font-semibold">
             Treść wiadomości
@@ -96,6 +120,7 @@ export default function Contact(): React.ReactElement {
           />
         </div>
 
+        {/* zgoda RODO */}
         <div className="mb-6 text-sm text-gray-700">
           <label className="flex items-start space-x-2">
             <input
@@ -128,4 +153,15 @@ export default function Contact(): React.ReactElement {
       </form>
     </div>
   );
+}
+
+// -------------------------
+// Strona kontaktowa
+// -------------------------
+export default function Contact(): React.ReactElement {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const productNameFromUrl = params.get("product") || undefined;
+
+  return <ContactForm productName={productNameFromUrl} />;
 }
