@@ -10,6 +10,7 @@ import Social from "./pages/Social";
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 import Terms from "./pages/Terms";
+import ThankYou from "./pages/ThankYou";
 
 import logo from "../public/images/logo/logo.webp";
 
@@ -39,6 +40,7 @@ export default function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/products/:slug" element={<ProductDetails />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/thankyou" element={<ThankYou />} />
           </Routes>
         </main>
 

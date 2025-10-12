@@ -1,39 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-// -------------------------
-// Komponent formularza
-// -------------------------
 interface ContactFormProps {
   productName?: string;
 }
 
 function ContactForm({ productName }: ContactFormProps): React.ReactElement {
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = () => {
-    // nie robimy event.preventDefault()
-    setSubmitted(true);
-  };
-
-  if (submitted) {
-    return (
-      <div className="max-w-lg mt-40 mx-auto p-8 bg-moon-cream rounded-lg shadow-lg font-playfair text-azzurro-brown tracking-wide text-center">
-        <h2 className="text-2xl font-semibold mb-4">
-          Dziękujemy za wiadomość!
-        </h2>
-        {productName ? (
-          <p>
-            Otrzymaliśmy Twoje zapytanie dotyczące:{" "}
-            <span className="font-bold">{productName}</span>.
-          </p>
-        ) : (
-          <p>Skontaktujemy się z Tobą najszybciej jak to możliwe.</p>
-        )}
-      </div>
-    );
-  }
-
   return (
     <div className="max-w-lg mt-36 mx-auto p-8 bg-moon-cream rounded-lg shadow-lg font-playfair text-azzurro-brown tracking-wide">
       <h1 className="text-4xl font-bold mb-8 text-center">Kontakt</h1>
@@ -41,16 +13,18 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
       <form
         name="contact"
         method="POST"
+        action="/thankyou"
         data-netlify="true"
         netlify-honeypot="bot-field"
-        onSubmit={handleSubmit}
       >
+        {/* wymagany hidden do identyfikacji formularza */}
         <input type="hidden" name="form-name" value="contact" />
+        {/* jeśli formularz jest z produktu */}
         {productName && (
           <input type="hidden" name="product" value={productName} />
         )}
 
-        {/* honeypot */}
+        {/* honeypot (ukryte pole) */}
         <p className="hidden">
           <label>
             Jeśli jesteś robotem, zostaw to pole puste:
@@ -73,7 +47,7 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
               type="text"
               value={productName}
               readOnly
-              className="w-full px-4 py-3 border border-azzurro-brown rounded-md focus:outline-none focus:ring-2 focus:ring-moon-rose transition bg-gray-100"
+              className="w-full px-4 py-3 border border-azzurro-brown rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-moon-rose transition"
             />
           </div>
         )}
@@ -123,7 +97,7 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
           />
         </div>
 
-        {/* zgoda RODO */}
+        {/* RODO */}
         <div className="mb-6 text-sm text-gray-700">
           <label className="flex items-start space-x-2">
             <input
@@ -147,6 +121,7 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
           </label>
         </div>
 
+        {/* przycisk */}
         <button
           type="submit"
           className="w-full bg-azzurro-brown-light hover:bg-azzurro-contrast text-white font-semibold py-3 rounded-md hover:bg-moon-rose-dark transition"
@@ -158,9 +133,6 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
   );
 }
 
-// -------------------------
-// Strona kontaktowa
-// -------------------------
 export default function Contact(): React.ReactElement {
   const location = useLocation();
   const params = new URLSearchParams(location.search);
