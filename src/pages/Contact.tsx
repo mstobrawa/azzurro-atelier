@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-interface ContactFormProps {
-  productName?: string;
-}
+export default function Contact(): React.ReactElement {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const productNameFromUrl = params.get("product") || undefined;
 
-function ContactForm({ productName }: ContactFormProps): React.ReactElement {
   const [submitted, setSubmitted] = useState(false);
 
-  // Ważne: nie blokujemy submitu, Netlify potrzebuje normalnego wysyłania
-  const handleSubmit = () => setSubmitted(true);
+  const handleSubmit = () => {
+    // Nie blokujemy default submitu!
+    setSubmitted(true);
+  };
 
   if (submitted) {
     return (
@@ -17,10 +19,10 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
         <h2 className="text-2xl font-semibold mb-4">
           Dziękujemy za wiadomość!
         </h2>
-        {productName ? (
+        {productNameFromUrl ? (
           <p>
             Otrzymaliśmy Twoje zapytanie dotyczące:{" "}
-            <span className="font-bold">{productName}</span>.
+            <span className="font-bold">{productNameFromUrl}</span>.
           </p>
         ) : (
           <p>Skontaktujemy się z Tobą najszybciej jak to możliwe.</p>
@@ -41,36 +43,15 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
         onSubmit={handleSubmit}
       >
         <input type="hidden" name="form-name" value="contact" />
-        {productName && (
-          <input type="hidden" name="product" value={productName} />
-        )}
-
-        {/* honeypot */}
         <p className="hidden">
           <label>
-            Jeśli jesteś robotem, zostaw to pole puste:
+            Nie wypełniaj tego pola:
             <input name="bot-field" />
           </label>
         </p>
 
-        {/* widoczne pole produktu */}
-        {productName && (
-          <div className="mb-6">
-            <label
-              htmlFor="product"
-              className="block mb-2 text-lg font-semibold"
-            >
-              Produkt
-            </label>
-            <input
-              id="product"
-              name="product"
-              type="text"
-              value={productName}
-              readOnly
-              className="w-full px-4 py-3 border border-azzurro-brown rounded-md focus:outline-none focus:ring-2 focus:ring-moon-rose transition bg-gray-100"
-            />
-          </div>
+        {productNameFromUrl && (
+          <input type="hidden" name="product" value={productNameFromUrl} />
         )}
 
         <div className="mb-6">
@@ -115,7 +96,6 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
           />
         </div>
 
-        {/* zgoda RODO */}
         <div className="mb-6 text-sm text-gray-700">
           <label className="flex items-start space-x-2">
             <input
@@ -126,7 +106,8 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
             />
             <span>
               Wyrażam zgodę na przetwarzanie moich danych osobowych w celu
-              kontaktu. Więcej informacji w{" "}
+              kontaktu w sprawie zapytania. Administratorem danych jest Azzurro
+              Atelier. Więcej informacji znajdziesz w{" "}
               <Link
                 to="/terms"
                 className="underline text-[#52220e] hover:text-[#3d1a0b]"
@@ -147,12 +128,4 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
       </form>
     </div>
   );
-}
-
-export default function Contact(): React.ReactElement {
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const productNameFromUrl = params.get("product") || undefined;
-
-  return <ContactForm productName={productNameFromUrl} />;
 }
