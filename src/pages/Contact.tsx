@@ -13,7 +13,7 @@ function ContactForm({ productName }: ContactFormProps): React.ReactElement {
       <form
         name="contact"
         method="POST"
-        action="/thankyou"
+        action="./ThankYou"
         data-netlify="true"
         netlify-honeypot="bot-field"
       >
