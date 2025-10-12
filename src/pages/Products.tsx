@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function Products() {
   return (
-    <div className="container mx-auto px-4 pt-32">
-      <h1 className="text-4xl font-playfair font-bold mb-6 text-center text-azzurro-brown tracking-wider">
+    <div className="container mx-auto px-4 pt-32 font-playfair text-azzurro-brown">
+      <h1 className="text-4xl font-playfair font-bold mb-6 text-center tracking-wider">
         Nasze produkty
       </h1>
 
@@ -13,20 +13,22 @@ export default function Products() {
           <Link
             key={product.id}
             to={`/products/${product.slug}`}
-            className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow block"
+            className="block bg-white rounded-2xl shadow-md p-6 transition-shadow hover:shadow-md" // cień i padding jak w ProductDetails
           >
             <img
               src={product.image}
               alt={product.name}
-              className="w-full h-auto object-cover"
+              className="w-full h-auto object-cover rounded-lg" // spójne z ProductDetails
               loading="lazy"
             />
-            <div className="p-5 text-center">
+            <div className="text-center mt-4">
               <h2 className="text-xl font-semibold mb-1">{product.name}</h2>
-              <h2 className="text-md font-playfair mb-1">
-                {product.discription}
-              </h2>
-              <p className="text-gray-600 text-2xl">{product.price}</p>
+              {product.discription && (
+                <h3 className="text-md font-playfair mb-1">
+                  {product.discription}
+                </h3>
+              )}
+              <p className="text-azzurro-brown text-2xl">{product.price}</p>
             </div>
           </Link>
         ))}
