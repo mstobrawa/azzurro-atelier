@@ -11,7 +11,10 @@ interface ContactFormProps {
 function ContactForm({ productName }: ContactFormProps): React.ReactElement {
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = () => setSubmitted(true);
+  const handleSubmit = () => {
+    // nie robimy event.preventDefault()
+    setSubmitted(true);
+  };
 
   if (submitted) {
     return (
