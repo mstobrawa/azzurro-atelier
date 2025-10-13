@@ -2,7 +2,7 @@ export type Product = {
   id: number;
   name: string;
   price: string;
-  discription?: string;
+  description?: string;
   image: string;
   slug: string;
 };
@@ -12,7 +12,7 @@ export const products: Product[] = [
     id: 1,
     name: "Kolczyki Perla",
     price: "39.99 zł z VAT",
-    discription:
+    description:
       "Eleganckie kolczyki z masy perłwej z subtelnym złotym zapięcięm.",
     image: "/images/products/01.webp",
     slug: "kolczyki-perla-01",
@@ -57,7 +57,7 @@ export const products: Product[] = [
     name: "Kolczyki Cuori Neri",
     price: "39.99 zł z VAT",
     image: "/images/products/07.webp",
-    discription: "Chwilowy brak na stanie - Zapytaj o dostępność",
+    description: "Chwilowy brak na stanie - Zapytaj o dostępność",
     slug: "kolczyki-cuori-neri-07",
   },
 ];

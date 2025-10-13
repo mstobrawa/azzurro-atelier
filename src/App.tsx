@@ -18,7 +18,7 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col min-h-screen font-playfair text-azzurro-brown">
         <Header
           logo={logo}
           title="Azzurro Atelier"
@@ -31,7 +31,7 @@ export default function App() {
           ]}
         />
 
-        <main className="flex-grow">
+        <main className="flex-grow bg-azzurro-cream">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -45,7 +45,7 @@ export default function App() {
         </main>
 
         <Footer
-          title="AZZURRO Atelier"
+          title="Azzurro Atelier"
           links={[
             { label: "O nas", href: "/about" },
             { label: "Kontakt", href: "/contact" },
