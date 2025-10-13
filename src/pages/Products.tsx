@@ -23,9 +23,9 @@ export default function Products() {
             />
             <div className="text-center mt-4">
               <h2 className="text-xl font-semibold mb-1">{product.name}</h2>
-              {product.discription && (
+              {product.description && (
                 <h3 className="text-md mb-1 text-azzurro-brown/80">
-                  {product.discription}
+                  {product.description}
                 </h3>
               )}
               <p className="text-2xl font-bold">{product.price}</p>

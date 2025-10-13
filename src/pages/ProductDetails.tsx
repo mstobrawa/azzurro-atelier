@@ -29,7 +29,7 @@ export default function ProductDetails() {
         <h1 className="text-4xl font-bold mb-2 text-azzurro-contrast">
           {product.name}
         </h1>
-        <h2 className="text-xl mb-4 opacity-90">{product.discription}</h2>
+        <h2 className="text-xl mb-4 opacity-90">{product.description}</h2>
         <p className="text-3xl font-semibold mb-8">{product.price}</p>
 
         {/* Link do formularza kontaktowego */}
